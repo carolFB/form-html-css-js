@@ -1,0 +1,10 @@
+h1{text-align:center;
+	color:blue;
+	text-shadow: 1px 1px 2px #ffff00;
+Font-weight:bold; }
+legend{color: white;
+background:red}
+fieldset{background:cyan}
+button{background:gray}
+button[type=button]{background:pink}
+input[type=text]{background-color:#ffff00;}

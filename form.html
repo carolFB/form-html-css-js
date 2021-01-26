@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<body>
+<h1> Formulario Información Alta Telefónica </h1>
+<form action="./procesarFormulario.php" name="telefónica">
+<fieldset>
+<legend>Datos Personales</legend>
+Nombre: <input type="text" name="nombre" maxlenght="30"/><br/>
+Apellidos: <input type="text" name="apellidos" maxlenght="60"/><br/>
+Dirección: <input type="text" name="dirección" maxlenght="60"/><br/>
+Codigo Postal: <input type="text" name="codigo postal" pattern="[0-9](5)"/><br/>
+Localidad: <input type="text" name="localidad"/><br/>
+</fieldset>
+<br/>
+<fieldset>
+<legend>Tipo de Contratacion</legend>
+<input type="radio" name="tipoc" value="nuevo" checked="checked">Nueva Contratacion 
+<input type="radio" name="tipoc" value="porta">Portabilidad 
+<input type="radio" name="tipoc" value="cambio">Cambio de contrato<br/><br/>
+Elija la compañia actual
+<select name="origen">
+<option value= "movistar">Movistar</option>
+<option value= "orange">Orange</option>
+<option value= "vodafone"> Vodafone</option>
+<option value= "yoigo"> Yoigo</option>
+<option value= "ninguna"> No tengo ninguna compañia</option>
+</select>
+En caso de nueva portabilidad elija una nueva compañia
+<select name="origen">
+<option value= "movistar">Movistar</option>
+<option value= "orange">Orange</option>
+<option value= "vodafone">Vodafone</option>
+<option value= "yoigo">Yoigo</option>
+</select>
+</fieldset>
+<p><fieldset>
+<legend> Datos bancarios</legend>
+Pais: <input type="text" name="Pais" id="Pais" value="ES" readonly="readonly"/>(solo valido ES)<br/>
+Control IBAN: <input type="text" name="ControlIBAN" id="ControlIBAN" placeholder="XX" pattern="[0-9]{2}"/>(dos
+digitos)<br/>
+Entidad: <input type="text" name="Entidad" id="Entidad" placeholder="XXXX" pattern="[0-9]{4}"/>(cuatro
+digitos)<br/>
+Sucursal: <input type="text" name="Sucursal" id="Sucursal" placeholder="XXXX" pattern="[0-9]{4}"/>(cuatro
+digitos)<br/>
+DC: <input type="text" name="DC" id="DC" placeholder="XX" pattern="[0-9]{2}"/>(dos digitos)<br/>
+Cuenta: <input type="text" name="Cuenta" id="Cuenta" placeholder="XXXXXXXXXX" pattern="[0-9]{10}"/>(diez digitos)<br/>
+</fieldset>
+<p><fieldset>
+<legend> Datos Estadisticos - ¿Como nos conocio?</legend>
+<input type="checkbox" name="Datose" value="TV">A traves de la TV<br>
+<input type="checkbox" name="Datose" value="Radio">A traves de la radio<br>
+<input type="checkbox" name="Datose" value="Internet">A traves de Internet<br>
+<input type="checkbox" name="Datose" value="Otros">Otros<br>
+<input type="range" name="valor" min="1" max="5" id="rango"/>Valoracion 1-5:<br/>
+Fecha de la encuesta <input type="date" name="Fechae" id="Fechae" value="2019-01-01"/><br/>
+</fieldset>
+<button type="submit">Enviar Datos</button>
+<button type="reset">Borrar Datos</button><br/>
+<button type="button" onclick="Valoracion();">Mostrar<br/>Valoracion</button>
+<button type="button" onclick="DatosBancarios();">Mostrar<br/> Cuenta</button>
+<button type="button" onclick="DiaSemana();">Mostrar Dia<br/> Semana</button>
+<script type="text/javascript">
+function Valoracion(){
+        var rango = document.getElementById("rango").value;
+        alert("Has valorado con" + rango);
+    }
+    function DatosBancarios(){
+        var Pais=document.getElementById("Pais").value;
+        var ControlIBAN=document.getElementById("ControlIBAN").value;
+        var Entidad=document.getElementById("Entidad").value;
+        var Sucursal=document.getElementById("Sucursal").value;
+        var DC=document.getElementById("DC").value;
+        var Cuenta=document.getElementById("Cuenta").value;
+        alert("Le informamos que su Cuenta Bancaria es:" + Pais + ControlIBAN + Entidad + Sucursal + DC + Cuenta);
+    }
+function DiaSemana(){
+	 document.getElementById("Fechae");
+	 var d = new Date();
+	 var DiaSemana = new Array(7);
+	 DiaSemana[0]="Domingo";
+	 DiaSemana[1]="Lunes";
+	 DiaSemana[2]="Martes";
+	 DiaSemana[3]="Miercoles";
+     DiaSemana[4]="Jueves";
+	 DiaSemana[5]="Viernes";
+     DiaSemana[6]="Sabado";
+	 var n = DiaSemana[d.getDay()];document.getElementById("Fechae").innerHTML = n;
+      alert("La fecha seleccionada en el elemento fecha es un:"+ n)
+	  }
+</script>
+</form>
+</body>
+</html>
